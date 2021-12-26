@@ -28,6 +28,6 @@ class FavVendorsController < ApplicationController
     private
     
     def ven_params
-        params.permit(:firstName, :lastName, :email, :foodType, :companyName, :user_id)
+        params.permit(:firstName, :lastName, :email, :foodType, :companyName, :user_id, :imgurl)
     end
 end

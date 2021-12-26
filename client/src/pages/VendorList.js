@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
-import BtnAddVend from "../components/BtnAddVend";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Badge from "react-bootstrap/Badge";
+import VendorCard from "../components/VendorCard";
+import Search from "../components/Search";
 
 const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
   const [vendors, setVendors] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(2);
-  const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,18 +19,6 @@ const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
     };
     getVendors();
   }, []);
-
-  const handleSearch = (e) => {
-    // get to handle request
-    fetch("/vendorQuery/" + search, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((r) => r.json())
-      .then((data) => setVendors(data));
-  };
 
   const viewMenuHandler = (e) => {
     console.log("this is e.target.id ", e.target.id);
@@ -58,59 +47,37 @@ const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
 
   return (
     <section>
-      <h3>Vendors near you</h3>
-      <label>search here </label>
-      <input
-        type="text"
-        id="searchBar"
-        autoComplete="off"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <button onClick={handleSearch}>SEARCH</button>
-
+      <h3>
+        <Badge pill bg="warning">
+          Vendors near you
+        </Badge>
+      </h3>
+      <Search setVendors={setVendors} />
       <InfiniteScroll
-        dataLength={vendors.length} //This is important field to render the next data
+        dataLength={vendors.length}
         next={fetchData}
         hasMore={hasMore}
         loader={<h4>Loading...</h4>}
         endMessage={
           <p style={{ textAlign: "center" }}>
-            <b>Yay! You have seen it all</b>
+            <b></b>
           </p>
         }
       >
         {vendors && vendors.length > 0 ? (
           vendors.map((vendor) => (
-            <div
-              key={vendor.id}
-              style={{
-                border: "1px solid #1a202c",
-                padding: "8px",
-                minWidth: "32px",
-                maxWidth: "512px",
-                background: "transparent",
-                transition: "all 0.1s ease-in",
-              }}
-            >
-              <div>
-                <h2>{vendor.companyName}</h2>
-                <p>{vendor.foodType}</p>
-                <p>vendor.id: {vendor.id}</p>
-
-                <button
-                  id={vendor.id}
-                  onClick={viewMenuHandler}
-                  getname={vendor.companyName}
-                >
-                  view menu
-                </button>
-                <BtnAddVend
-                  currentUser={currentUser}
-                  currentVendor={vendor}
-                ></BtnAddVend>
-              </div>
-            </div>
+            <>
+              <VendorCard
+                id={vendor.id}
+                img={vendor.imgurl}
+                companyName={vendor.companyName}
+                foodType={vendor.foodType}
+                viewMenuHandler={viewMenuHandler}
+                currentUser={currentUser}
+                currentVendor={vendor}
+              />
+              <p></p>
+            </>
           ))
         ) : (
           <>
@@ -123,3 +90,17 @@ const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
 };
 
 export default VendorList;
+
+// style={{
+//   border: "5px solid #1a202c",
+//   padding: "8px",
+//   minWidth: "32px",
+//   maxWidth: "512px",
+//   background: "transparent",
+//   transition: "all 0.1s ease-in",
+// }}
+
+// <label>search here </label>{" "}
+// <input
+
+// />{" "}

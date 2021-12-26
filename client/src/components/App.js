@@ -13,19 +13,6 @@ import VendMenuList from "../pages/VendMenuList";
 import NewMenuItem from "../pages/NewMenuItem";
 import EditMenuItem from "../pages/EditMenuItem";
 
-require("react-dom");
-window.React2 = require("react");
-console.log(window.React1 === window.React2);
-
-// might “see” two Reacts — one in application folder and one in your library folder.
-
-// one in app folder and one in sfp folder
-// /Users/VCNTX/Development/code/phase5/street-food-project/node_modules
-
-// run from not in client folder
-
-// npm link ../street-food-project/node_modules/react
-
 function App() {
   const [user, setUser] = useState(null);
   const [menuInfo, setMenuInfo] = useState("");

@@ -12,8 +12,10 @@ require 'faker'
 puts "starting seed"
 
 100.times do
-   vend = Vendor.create!(firstName: Faker::Name.first_name, lastName: Faker::Name.last_name, email: Faker::Internet.unique.email, password: '123', foodType: Faker::Restaurant.type, companyName: Faker::Restaurant.unique.name )
+   vend = Vendor.create!(firstName: Faker::Name.first_name, lastName: Faker::Name.last_name, email: Faker::Internet.unique.email, password: '123', foodType: Faker::Restaurant.type, companyName: Faker::Restaurant.unique.name, imgurl: Faker::LoremFlickr.image)
 
+   vend.menus.create!(companyName: vend.companyName, foodName: Faker::Food.dish, foodDesc: Faker::Food.description, price: Faker::Number.between(from: 1, to: 10))
+   vend.menus.create!(companyName: vend.companyName, foodName: Faker::Food.dish, foodDesc: Faker::Food.description, price: Faker::Number.between(from: 1, to: 10))
    vend.menus.create!(companyName: vend.companyName, foodName: Faker::Food.dish, foodDesc: Faker::Food.description, price: Faker::Number.between(from: 1, to: 10))
 end
 # menus

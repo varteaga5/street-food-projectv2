@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Badge from "react-bootstrap/Badge";
+import Search from "../components/Search";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 const FavList = ({ getMenuInfo, getVendorName }) => {
   const [vendors, setVendors] = useState("");
-  const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,68 +23,88 @@ const FavList = ({ getMenuInfo, getVendorName }) => {
       .then(setVendors);
   }
 
-  const handleSearch = (e) => {
-    // get to handle request
-    fetch("/vendorQuery/" + search, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((r) => r.json())
-      .then((data) => setVendors(data));
-  };
-
   const viewMenuHandler = (e) => {
     console.log("this is e.target.id ", e.target.id);
-    fetch("/favmenus/" + e.target.id)
-      .then((r) => r.json())
-      .then((menu) => getMenuInfo(menu));
+    let vendorName = e.target.getAttribute("getname");
 
-    getVendorName(e.target.getAttribute("getname"));
+    fetch("/favmenus/" + vendorName)
+      .then((r) => r.json())
+      .then((menu) => {
+        console.log("this is menu ", menu);
+        getMenuInfo(menu);
+      });
+
+    getVendorName(vendorName);
     navigate("/ViewMenu");
   };
 
+  //   <article key={vendor.id}>
+  //   <div>
+  //     <h2>{vendor.companyName}</h2>
+  //     <p>{vendor.foodType}</p>
+  //     <button
+  //       id={vendor.companyName}
+  //       onClick={viewMenuHandler}
+  //       getname={vendor.companyName}
+  //     >
+  //       view menu
+  //     </button>
+  //     <button id={vendor.id} onClick={handleDelete}>
+  //       remove from list
+  //     </button>
+  //   </div>
+  // </article>
+
+  //   <>
+  //   <VendorCard
+  //     id={vendor.id}
+  //     img={vendor.imgurl}
+  //     companyName={vendor.companyName}
+  //     foodType={vendor.foodType}
+  //     viewMenuHandler={viewMenuHandler}
+  //     currentUser={currentUser}
+  //     currentVendor={vendor}
+  //   />
+  //   <p></p>
+  // </>
+
   return (
     <section>
-      <h3>My Favorite Vendors</h3>
-      <label>search here</label>
-      <input
-        type="text"
-        id="searchBar"
-        autoComplete="off"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <button onClick={handleSearch}>SEARCH</button>
+      <h3>
+        <Badge bg="warning">My Favorite Vendors</Badge>
+      </h3>
+      <Search setVendors={setVendors} />
       {vendors && vendors.length > 0 ? (
-        vendors.map(
-          (vendor) => (
-            console.log("this is vendor", vendor),
-            (
-              <article key={vendor.id}>
-                <div>
-                  <h2>{vendor.companyName}</h2>
-                  <p>{vendor.foodType}</p>
-                  <button
-                    id={vendor.companyName}
-                    onClick={viewMenuHandler}
-                    getname={vendor.companyName}
-                  >
-                    view menu
-                  </button>
-                  <button id={vendor.id} onClick={handleDelete}>
-                    remove from list
-                  </button>
-                </div>
-              </article>
-            )
-          )
-        )
+        vendors.map((vendor) => (
+          <Card
+            className={"mx-auto"}
+            key={vendor.id}
+            style={{ width: "18rem", display: "flex" }}
+          >
+            <Card.Img variant="top" src={vendor.imgurl} />
+            <Card.Body>
+              <Card.Title>{vendor.companyName}</Card.Title>
+              <Card.Text>{vendor.foodType}</Card.Text>
+              <Button
+                id={vendor.id}
+                onClick={viewMenuHandler}
+                getname={vendor.companyName}
+                variant="danger"
+              >
+                view menu
+              </Button>{" "}
+              <Button id={vendor.id} onClick={handleDelete} variant="danger">
+                remove from list
+              </Button>
+            </Card.Body>
+          </Card>
+        ))
       ) : (
         <>
           <h2>No vendors Found</h2>
-          <button onClick={() => navigate("/")}>Browse Vendors</button>
+          <Button variant="warning" onClick={() => navigate("/")}>
+            Browse Vendors
+          </Button>
         </>
       )}
     </section>

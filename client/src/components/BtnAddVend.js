@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
 
 const BtnAddVend = ({ currentVendor, currentUser }) => {
   const [addedVend, setAddedVend] = useState(false);
-  console.log("this is currentVendor.id", currentVendor.id);
+  // console.log("this is currentVendor.id", currentVendor.id);
 
   const clickHandler = (e) => {
     fetch("/fav_vendors", {
@@ -18,13 +19,14 @@ const BtnAddVend = ({ currentVendor, currentUser }) => {
         foodType: currentVendor.foodType,
         companyName: currentVendor.companyName,
         user_id: currentUser.id,
+        imgurl: currentVendor.imgurl,
       }),
     }).then((r) => setAddedVend((prevState) => !prevState));
   };
   return (
-    <button onClick={clickHandler}>
+    <Button variant="danger" onClick={clickHandler}>
       {addedVend ? "added" : "add to favorites"}
-    </button>
+    </Button>
   );
 };
 

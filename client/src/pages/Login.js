@@ -4,6 +4,8 @@ import CustLoginForm from "../components/CustLoginForm";
 import CustSignUpForm from "../components/CustSignUpForm";
 import VendLoginForm from "../components/VendLoginForm";
 import VendSignUpForm from "../components/VendSignUpForm";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 
 export const Login = ({ onLogin }) => {
   const [showCustLogin, setShowCustLogin] = useState(true);
@@ -12,52 +14,68 @@ export const Login = ({ onLogin }) => {
   return (
     <div>
       <section>
-        <h1>Street Foods</h1>
-        <div>
-          <button onClick={() => setShowCustLogin(true)}>Get Food</button>
-          <button onClick={() => setShowCustLogin(false)}>Vendor</button>
-        </div>
+        <Container>
+          <h1>Street Foods</h1>
+          <p>
+            <Button variant="danger" onClick={() => setShowCustLogin(true)}>
+              get food!
+            </Button>
+            <Button variant="warning" onClick={() => setShowCustLogin(false)}>
+              vendors!
+            </Button>
+          </p>
+        </Container>
         {showCustLogin ? (
           showLogin ? (
             <>
-              <CustLoginForm onLogin={onLogin} />
+              <Container className="bg-danger shadow-1-strong">
+                <CustLoginForm onLogin={onLogin} />
+              </Container>
               <hr />
-              <p>
+              <Container>
                 <button color="primary" onClick={() => setShowLogin(false)}>
                   Create New Account
                 </button>
-              </p>
+              </Container>
             </>
           ) : (
             <>
-              <CustSignUpForm onLogin={onLogin} />
+              <Container className="bg-danger shadow-1-strong">
+                <CustSignUpForm onLogin={onLogin} />
+              </Container>
+
               <hr />
-              <p>
+              <Container>
                 <button color="primary" onClick={() => setShowLogin(true)}>
                   Back to Log In
                 </button>
-              </p>
+              </Container>
             </>
           )
         ) : showLogin ? (
           <>
-            <VendLoginForm onLogin={onLogin} />
+            <Container className="bg-warning shadow-1-strong">
+              <VendLoginForm onLogin={onLogin} />
+            </Container>
+
             <hr />
-            <p>
+            <Container>
               <button color="primary" onClick={() => setShowLogin(false)}>
                 Create New Account
               </button>
-            </p>
+            </Container>
           </>
         ) : (
           <>
-            <VendSignUpForm onLogin={onLogin} />
+            <Container className="bg-warning shadow-1-strong">
+              <VendSignUpForm onLogin={onLogin} />
+            </Container>
             <hr />
-            <p>
+            <Container>
               <button color="primary" onClick={() => setShowLogin(true)}>
                 Back to Log In
               </button>
-            </p>
+            </Container>
           </>
         )}
       </section>

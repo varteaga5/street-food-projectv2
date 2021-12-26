@@ -42,7 +42,13 @@ const NavBar = ({ setUser, userIsVendor }) => {
   userIsVendor ? (userType = vendorType) : (userType = custType);
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar
+      autoClose="outside"
+      sticky="top"
+      bg="dark"
+      variant="dark"
+      expand="lg"
+    >
       <Container>
         <Navbar.Brand as={Link} to="/">
           Street Food

@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_12_11_050907) do
     t.string "email"
     t.string "foodType"
     t.string "companyName"
+    t.string "imgurl"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_fav_vendors_on_user_id"
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_12_11_050907) do
     t.string "foodType"
     t.string "companyName"
     t.string "favFood"
+    t.string "imgurl"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["type"], name: "index_users_on_type"

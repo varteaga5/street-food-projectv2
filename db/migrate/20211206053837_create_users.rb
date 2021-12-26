@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :foodType
       t.string :companyName
       t.string :favFood
+      t.string :imgurl
 
       t.timestamps
     end

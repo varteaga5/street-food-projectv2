@@ -10,7 +10,7 @@ const VendSignUpForm = ({ onLogin }) => {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [foodType, setFoodType] = useState("");
-  //   const [type, setType] = useState("Vendor");
+  const [img, setImg] = useState("");
   const [inputErrors, setInputErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -33,6 +33,7 @@ const VendSignUpForm = ({ onLogin }) => {
         foodType,
         companyName,
         type: "Vendor",
+        img,
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -45,10 +46,14 @@ const VendSignUpForm = ({ onLogin }) => {
     navigate("/");
   }
 
+  const fileSelectHandler = (e) => {
+    setImg(e.target.files[0]);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="firstName">first name</label>
+        <label htmlFor="firstName">first name </label>{" "}
         <input
           type="text"
           id="firstName"
@@ -59,7 +64,7 @@ const VendSignUpForm = ({ onLogin }) => {
         />
       </div>
       <div>
-        <label htmlFor="lastName">last name</label>
+        <label htmlFor="lastName">last name </label>{" "}
         <input
           type="text"
           id="lastName"
@@ -70,7 +75,7 @@ const VendSignUpForm = ({ onLogin }) => {
         />
       </div>
       <div>
-        <label htmlFor="email">email</label>
+        <label htmlFor="email">email </label>{" "}
         <input
           type="text"
           id="email"
@@ -81,7 +86,7 @@ const VendSignUpForm = ({ onLogin }) => {
         />
       </div>
       <div>
-        <label htmlFor="password">password</label>
+        <label htmlFor="password">password </label>{" "}
         <input
           type="password"
           id="password"
@@ -91,7 +96,7 @@ const VendSignUpForm = ({ onLogin }) => {
         />
       </div>
       <div>
-        <label htmlFor="password">password confirmation</label>
+        <label htmlFor="password">password confirmation </label>{" "}
         <input
           type="password"
           id="password_confirmation"
@@ -101,7 +106,7 @@ const VendSignUpForm = ({ onLogin }) => {
         />
       </div>
       <div>
-        <label htmlFor="foodType">food type</label>
+        <label htmlFor="foodType">food type </label>{" "}
         <input
           type="text"
           id="foodType"
@@ -111,7 +116,7 @@ const VendSignUpForm = ({ onLogin }) => {
         />
       </div>
       <div>
-        <label htmlFor="companyName">company name</label>
+        <label htmlFor="companyName">company name </label>{" "}
         <input
           type="text"
           id="companyName"
@@ -119,6 +124,11 @@ const VendSignUpForm = ({ onLogin }) => {
           value={companyName}
           onChange={(e) => setCompanyName(e.target.value)}
         />
+      </div>
+
+      <div>
+        <label htmlFor="img">profile picture</label>{" "}
+        <input type="file" onChange={fileSelectHandler} />
       </div>
       <div>
         <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>

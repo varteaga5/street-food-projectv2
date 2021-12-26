@@ -8,6 +8,7 @@ class CreateFavVendors < ActiveRecord::Migration[6.1]
       t.string :email
       t.string :foodType
       t.string :companyName
+      t.string :imgurl
 
       t.timestamps
     end
