@@ -102,7 +102,7 @@ function App() {
   return (
     <div className="App">
       <NavBar userIsVendor={userIsVendor} setUser={setUser} />
-      <h3>hello, {user.firstName} </h3>
+      <h3>hello, {user.firstName}!</h3>
       <div>
         <Routes>{userType}</Routes>
       </div>

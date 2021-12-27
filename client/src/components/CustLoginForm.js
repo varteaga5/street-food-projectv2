@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 // used to go to home page on login
 import { useNavigate } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const CustLoginForm = ({ onLogin }) => {
   // formfield was formerly a div
@@ -31,32 +33,19 @@ const CustLoginForm = ({ onLogin }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">email</label>
-        <input
-          type="text"
-          id="username"
-          autoComplete="off"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">password</label>
-        <input
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <div>
-        <button variant="fill" color="primary" type="submit">
-          {isLoading ? "Loading..." : "Login"}
-        </button>
-      </div>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label className="text-danger">email</Form.Label>
+        <Form.Control type="email" placeholder="enter email" />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label className="text-danger">password</Form.Label>
+        <Form.Control type="password" placeholder="password" />
+      </Form.Group>
+      <Button variant="danger" type="submit">
+        {isLoading ? "loading..." : "login"}
+      </Button>
       <div>
         {errors.map((err) => (
           <div key={err}>
@@ -65,11 +54,47 @@ const CustLoginForm = ({ onLogin }) => {
           </div>
         ))}
       </div>
-    </form>
+    </Form>
   );
 };
 
 export default CustLoginForm;
+
+// <form onSubmit={handleSubmit}>
+//   <div>
+//     <label htmlFor="email">email</label>
+//     <input
+//       type="text"
+//       id="username"
+//       autoComplete="off"
+//       value={email}
+//       onChange={(e) => setEmail(e.target.value)}
+//     />
+//   </div>
+//   <div>
+//     <label htmlFor="password">password</label>
+//     <input
+//       type="password"
+//       id="password"
+//       autoComplete="current-password"
+//       value={password}
+//       onChange={(e) => setPassword(e.target.value)}
+//     />
+//   </div>
+//   <div>
+//     <button variant="fill" color="primary" type="submit">
+//       {isLoading ? "Loading..." : "Login"}
+//     </button>
+//   </div>
+//   <div>
+//     {errors.map((err) => (
+//       <div key={err}>
+//         <span>!</span>
+//         <p>{err}</p>
+//       </div>
+//     ))}
+//   </div>
+// </form>
 
 // css for err div
 // const Wrapper = styled.div`

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const EditMenuItem = ({
   vendorFoodId,
@@ -41,52 +43,51 @@ const EditMenuItem = ({
     <section>
       <div>
         <h2>edit menu item</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="foodName">food name</label>
-            <input
+        <Form onSubmit={handleSubmit} className="h-25 d-inline-block">
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>food name</Form.Label>
+            <Form.Control
               type="text"
-              id="foodName"
               value={foodName}
               onChange={(e) => setFoodName(e.target.value)}
+              placeholder="enter a food name"
               autoFocus
             />
-          </div>
-          <div>
-            <label htmlFor="foodDesc">food description</label>
-            <textarea
-              id="foodDesc"
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>food description</Form.Label>
+            <Form.Control
+              as="textarea"
               rows="3"
+              placeholder="enter a description"
               value={foodDesc}
               onChange={(e) => setFoodDesc(e.target.value)}
             />
-          </div>
-          <div>
-            <label htmlFor="price">price</label>
-            <input
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>price</Form.Label>
+            <Form.Control
               type="text"
-              id="price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
-              autoFocus
+              placeholder="enter a price"
             />
-          </div>
-
-          <div>
-            <button color="primary" type="submit">
-              {isLoading ? "Loading..." : "update menu item"}
-            </button>{" "}
-            <button onClick={() => navigate("/VendMenuList")}>Cancel</button>
-          </div>
+          </Form.Group>
+          <Button type="submit">
+            {isLoading ? "loading..." : "update menu item"}
+          </Button>{" "}
+          <Button variant="danger" onClick={() => navigate("/VendMenuList")}>
+            cancel
+          </Button>
           <div>
             {errors.map((err) => (
-              <div>
+              <div key={err}>
                 <span>!</span>
-                <p key={err}>{err}</p>
+                <p>{err}</p>
               </div>
             ))}
           </div>
-        </form>
+        </Form>
       </div>
     </section>
   );

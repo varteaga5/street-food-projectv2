@@ -38,36 +38,6 @@ const FavList = ({ getMenuInfo, getVendorName }) => {
     navigate("/ViewMenu");
   };
 
-  //   <article key={vendor.id}>
-  //   <div>
-  //     <h2>{vendor.companyName}</h2>
-  //     <p>{vendor.foodType}</p>
-  //     <button
-  //       id={vendor.companyName}
-  //       onClick={viewMenuHandler}
-  //       getname={vendor.companyName}
-  //     >
-  //       view menu
-  //     </button>
-  //     <button id={vendor.id} onClick={handleDelete}>
-  //       remove from list
-  //     </button>
-  //   </div>
-  // </article>
-
-  //   <>
-  //   <VendorCard
-  //     id={vendor.id}
-  //     img={vendor.imgurl}
-  //     companyName={vendor.companyName}
-  //     foodType={vendor.foodType}
-  //     viewMenuHandler={viewMenuHandler}
-  //     currentUser={currentUser}
-  //     currentVendor={vendor}
-  //   />
-  //   <p></p>
-  // </>
-
   return (
     <section>
       <h3>
@@ -111,3 +81,33 @@ const FavList = ({ getMenuInfo, getVendorName }) => {
   );
 };
 export default FavList;
+
+//   <article key={vendor.id}>
+//   <div>
+//     <h2>{vendor.companyName}</h2>
+//     <p>{vendor.foodType}</p>
+//     <button
+//       id={vendor.companyName}
+//       onClick={viewMenuHandler}
+//       getname={vendor.companyName}
+//     >
+//       view menu
+//     </button>
+//     <button id={vendor.id} onClick={handleDelete}>
+//       remove from list
+//     </button>
+//   </div>
+// </article>
+
+//   <>
+//   <VendorCard
+//     id={vendor.id}
+//     img={vendor.imgurl}
+//     companyName={vendor.companyName}
+//     foodType={vendor.foodType}
+//     viewMenuHandler={viewMenuHandler}
+//     currentUser={currentUser}
+//     currentVendor={vendor}
+//   />
+//   <p></p>
+// </>

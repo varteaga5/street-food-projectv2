@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
   
+  
+  get "/vendorQuery/:query", to: "vendors#search"
+
+
   get "/favmenus/:companyName", to: 'menus#show_by_name'
   resources :menus
   resources :fav_vendors
-  post "/vendorsignup", to: "vendors#create"
+  post "/vendors", to: "vendors#create"
   post "/customersignup", to: "customers#create"
-
+  
   post "/vendorlogin", to: "sessions#create"
   post "/customerlogin", to: "sessions#create"
-
-  patch "/updatevendor/:id", to: "vendors#update"
+  
+  patch "/customers/:id", to: "customers#update"
+  patch "/vendors/:id", to: "vendors#update"
 
   get "/vendorlist", to: "vendors#vendor_list"
   get "/vendorlist/:page", to: "vendors#vendor_list"

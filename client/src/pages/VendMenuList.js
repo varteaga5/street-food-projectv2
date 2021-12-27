@@ -2,6 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Search from "../components/Search";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 const VendMenuList = ({
   currentUser,
@@ -49,65 +52,46 @@ const VendMenuList = ({
     navigate("/EditMenuItem");
   };
 
-  //   create button comp
-
-  // dont create btn comp
-  // in update page:
-  // useeffect pre pops data with current_user.menus.id
-
   return (
     <section>
       <h3>My Menu</h3>
       <div>this is VendMenuList</div>
-      <label>search here </label>
-      <input
-        type="text"
-        id="searchBar"
-        autoComplete="off"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-
-      <button onClick={handleSearch}>SEARCH</button>
+      <Search />
 
       <div>
         <Link as={Link} to="/NewMenuItem">
-          <button>Add New Menu Item</button>
+          <Button>add new menu item</Button>
         </Link>
       </div>
       {menuList && menuList.length > 0 ? (
         menuList.map((food) => (
-          <div
-            key={food.id}
-            style={{
-              border: "1px solid #1a202c",
-              padding: "8px",
-              minWidth: "32px",
-              maxWidth: "512px",
-              background: "transparent",
-              transition: "all 0.1s ease-in",
-              textAlign: "center",
-            }}
-          >
-            <div>
-              <h2>{food.foodName}</h2>
-              <p>{food.foodDesc}</p>
-              <p>${food.price}</p>
-            </div>
-            <div>
-              <button
-                id={food.id}
-                foodname={food.foodName}
-                fooddesc={food.foodDesc}
-                foodprice={food.price}
-                onClick={handleEdit}
-              >
-                Edit
-              </button>
-              <button id={food.id} onClick={handleDelete}>
-                Delete
-              </button>
-            </div>
+          <div key={food.id}>
+            <Card className={"mx-auto"} style={{ width: "18rem" }}>
+              <Card.Body>
+                <Card.Title>
+                  <h3>{food.foodName}</h3>
+                </Card.Title>
+                <Card.Text>{food.foodDesc}</Card.Text>
+                <Card.Subtitle className="mb-2 text-muted">
+                  ${food.price}
+                </Card.Subtitle>
+              </Card.Body>
+              <div>
+                <Button
+                  id={food.id}
+                  foodname={food.foodName}
+                  fooddesc={food.foodDesc}
+                  foodprice={food.price}
+                  onClick={handleEdit}
+                >
+                  edit
+                </Button>{" "}
+                <Button id={food.id} variant="danger" onClick={handleDelete}>
+                  delete
+                </Button>
+              </div>
+            </Card>
+            <p></p>
           </div>
         ))
       ) : (
@@ -120,3 +104,40 @@ const VendMenuList = ({
 };
 
 export default VendMenuList;
+
+// {menuList && menuList.length > 0 ? (
+//   menuList.map((food) => (
+//     <>
+//     <Card
+//       key={food.id}
+//       style={{
+//         width: "18rem"
+//       }}
+//     >
+//       <div>
+//         <h2>{food.foodName}</h2>
+//         <p>{food.foodDesc}</p>
+//         <p>${food.price}</p>
+//       </div>
+//       <div>
+//         <button
+//           id={food.id}
+//           foodname={food.foodName}
+//           fooddesc={food.foodDesc}
+//           foodprice={food.price}
+//           onClick={handleEdit}
+//         >
+//           Edit
+//         </button>
+//         <button id={food.id} onClick={handleDelete}>
+//           Delete
+//         </button>
+//       </div>
+//     </Card>
+//     </>
+//   ))
+// ) : (
+//   <>
+//     <h2>no menu items found</h2>
+//   </>
+// )}

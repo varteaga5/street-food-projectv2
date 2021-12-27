@@ -8,6 +8,8 @@ import Search from "../components/Search";
 const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
   const [vendors, setVendors] = useState([]);
   const [hasMore, setHasMore] = useState(true);
+  const [search, setSearch] = useState("");
+
   const [page, setPage] = useState(2);
   const navigate = useNavigate();
 
@@ -52,7 +54,7 @@ const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
           Vendors near you
         </Badge>
       </h3>
-      <Search setVendors={setVendors} />
+      <Search Psearch={search} PsetSearch={setSearch} setVendors={setVendors} />
       <InfiniteScroll
         dataLength={vendors.length}
         next={fetchData}
@@ -66,7 +68,7 @@ const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
       >
         {vendors && vendors.length > 0 ? (
           vendors.map((vendor) => (
-            <>
+            <div id={vendor.id}>
               <VendorCard
                 id={vendor.id}
                 img={vendor.imgurl}
@@ -77,7 +79,7 @@ const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
                 currentVendor={vendor}
               />
               <p></p>
-            </>
+            </div>
           ))
         ) : (
           <>

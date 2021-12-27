@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 
-const Search = ({ setVendors }) => {
+const Search = ({ Psearch, PsetSearch, setVendors }) => {
   const [search, setSearch] = useState("");
 
   const handleSearch = (e) => {
@@ -35,7 +35,7 @@ const Search = ({ setVendors }) => {
         />
         <Button
           onClick={handleSearch}
-          variant="outline-danger"
+          variant="outline-success"
           id="button-addon2"
         >
           search

@@ -34,7 +34,6 @@ const ViewMenu = ({ menuInfo, vendorName }) => {
   return (
     <section>
       <h3>{vendorName}'s menu</h3>
-      <div>this is ViewMenu</div>
       <div>
         <Button variant="warning" onClick={() => navigate(-1)}>
           go back
@@ -42,7 +41,7 @@ const ViewMenu = ({ menuInfo, vendorName }) => {
       </div>
       {menuInfo && menuInfo.length > 0 ? (
         menuInfo.map((food) => (
-          <>
+          <div key={food.id}>
             <Card
               className={"mx-auto"}
               key={food.id}
@@ -59,7 +58,7 @@ const ViewMenu = ({ menuInfo, vendorName }) => {
               </Card.Body>
             </Card>
             <p></p>
-          </>
+          </div>
         ))
       ) : (
         <>
