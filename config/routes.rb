@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   
   
-  get "/vendorQuery/:query", to: "vendors#search"
-
+  get "/vendorQuery/:query", to: "vendors#index"
 
   get "/favmenus/:companyName", to: 'menus#show_by_name'
   resources :menus

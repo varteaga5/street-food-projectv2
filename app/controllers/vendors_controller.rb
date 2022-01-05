@@ -2,14 +2,27 @@ class VendorsController < ApplicationController
 
     skip_before_action :authorize, only: [:create, :show]
 
+    def index
+        @q = Vendor.ransack(params[:q])
+        render json: @q
+    end
+    
     # search = Vendor.query(params[:query])
-    # search = User.vendors.query(params[:query])
+    # search = User.vendors.query(params[:query]) not this one
     # search = Vendor.query(params[:query])
     # search = Vendor.query(params[:query])
     # search = Vendor.query(params[:query])
 
     def search
-        search = Vendor.query(params[:query])
+        # if params[:query]
+            
+        # else
+        #     vendor_list
+        # end
+        # search = Vendor.query(params[:query])
+        # search = vendors.where("companyName LIKE ? OR companyName LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+        
+
         render json: search
     end
 
