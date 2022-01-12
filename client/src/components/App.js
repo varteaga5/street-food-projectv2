@@ -11,7 +11,7 @@ import VendProfile from "../pages/VendProfile";
 import VendMenuList from "../pages/VendMenuList";
 import NewMenuItem from "../pages/NewMenuItem";
 import EditMenuItem from "../pages/EditMenuItem";
-import LogoImage from '/Users/VCNTX/Development/code/phase5/street-food-projectv2/client/src/assets/bgimg.jpeg';
+import LogoImage from '../assets/bgimg.jpeg';
 
 const sectionStyle = {
    backgroundImage: `url(${LogoImage})`,
@@ -27,7 +27,6 @@ function App() {
   const [currentDesc, setCurrentDesc] = useState("");
   const [currentPrice, setCurrentPrice] = useState("");
   const [vendorName, setVendorName] = useState("");
-  console.log("this is menuInfo", menuInfo);
 
   // on page load retrieves current user or vendor
   useEffect(() => {
