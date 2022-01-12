@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// used to go to home page on login
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -117,79 +116,3 @@ const CustSignUpForm = ({ onLogin }) => {
 };
 
 export default CustSignUpForm;
-
-// <form onSubmit={handleSubmit}>
-//   <div>
-//     <label htmlFor="firstName">firstName</label>
-//     <input
-//       type="text"
-//       id="firstName"
-//       autoComplete="off"
-//       value={firstName}
-//       onChange={(e) => setFirstName(e.target.value)}
-//       autoFocus
-//     />
-//   </div>
-//   <div>
-//     <label htmlFor="lastName">lastName</label>
-//     <input
-//       type="text"
-//       id="lastName"
-//       autoComplete="off"
-//       value={lastName}
-//       onChange={(e) => setLastName(e.target.value)}
-//       autoFocus
-//     />
-//   </div>
-//   <div>
-//     <label htmlFor="email">email</label>
-//     <input
-//       type="text"
-//       id="email"
-//       autoComplete="off"
-//       value={email}
-//       onChange={(e) => setEmail(e.target.value)}
-//       autoFocus
-//     />
-//   </div>
-//   <div>
-//     <label htmlFor="password">Password</label>
-//     <input
-//       type="password"
-//       id="password"
-//       value={password}
-//       onChange={(e) => setPassword(e.target.value)}
-//       autoComplete="current-password"
-//     />
-//   </div>
-//   <div>
-//     <label htmlFor="password">Password Confirmation</label>
-//     <input
-//       type="password"
-//       id="password_confirmation"
-//       value={passwordConfirmation}
-//       onChange={(e) => setPasswordConfirmation(e.target.value)}
-//       autoComplete="current-password"
-//     />
-//   </div>
-//   <div>
-//     <label htmlFor="favFood">My favorite food is...</label>
-//     <textarea
-//       rows="3"
-//       id="favFood"
-//       value={favFood}
-//       onChange={(e) => setFavFood(e.target.value)}
-//     />
-//   </div>
-//   <div>
-//     <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-//   </div>
-//   <div>
-//     {inputErrors.map((err) => (
-//       <div key={err}>
-//         <span>!</span>
-//         <p>{err}</p>
-//       </div>
-//     ))}
-//   </div>
-// </form>

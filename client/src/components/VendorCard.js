@@ -40,18 +40,3 @@ const VendorCard = ({
 };
 
 export default VendorCard;
-
-// <div>
-//   this is VendorCard
-//   <div key={id}>
-//     <h2>{companyName}</h2>
-//     <p>{foodType}</p>
-//     <button id={id} onClick={viewMenuHandler} getname={companyName}>
-//       view menu
-//     </button>
-//     <BtnAddVend
-//       currentUser={currentUser}
-//       currentVendor={currentVendor}
-//     ></BtnAddVend>
-//   </div>
-// </div>

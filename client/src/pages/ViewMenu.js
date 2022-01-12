@@ -7,29 +7,6 @@ const ViewMenu = ({ menuInfo, vendorName }) => {
   console.log("this is menuInfo: ", menuInfo);
   const navigate = useNavigate();
 
-  // clicks view menu, this will mirror btnaddvend
-  // send fetch to retrieve menu items
-  // when creating item use current vendor
-
-  //   style={{
-  //     border: "1px solid #1a202c",
-  //     padding: "8px",
-  //     minWidth: "32px",
-  //     maxWidth: "512px",
-  //     background: "transparent",
-  //     transition: "all 0.1s ease-in",
-  //     textAlign: "center",
-  //   }}
-
-  //   <div
-  //   key={food.id}
-  // >
-  //   <div>
-  //     <h2>{food.foodName}</h2>
-  //     <p>{food.foodDesc}</p>
-  //     <p>${food.price}</p>
-  //   </div>
-  // </div>
 
   return (
     <section>

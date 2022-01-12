@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// used to go to home page on login
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -57,7 +56,6 @@ const VendSignUpForm = ({ onLogin }) => {
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label className="text-warning">first name</Form.Label>
         <Form.Control
-          // className="text-warning"
           type="firstName"
           placeholder="enter first name"
           value={firstName}
@@ -141,95 +139,3 @@ const VendSignUpForm = ({ onLogin }) => {
 };
 
 export default VendSignUpForm;
-
-// <form onSubmit={handleSubmit}>
-//   <div>
-//     <label htmlFor="firstName">first name </label>{" "}
-//     <input
-//       type="text"
-//       id="firstName"
-//       autoComplete="off"
-//       value={firstName}
-//       onChange={(e) => setFirstName(e.target.value)}
-//       autoFocus
-//     />
-//   </div>
-//   <div>
-//     <label htmlFor="lastName">last name </label>{" "}
-//     <input
-//       type="text"
-//       id="lastName"
-//       autoComplete="off"
-//       value={lastName}
-//       onChange={(e) => setLastName(e.target.value)}
-//       autoFocus
-//     />
-//   </div>
-//   <div>
-//     <label htmlFor="email">email </label>{" "}
-//     <input
-//       type="text"
-//       id="email"
-//       autoComplete="off"
-//       value={email}
-//       onChange={(e) => setEmail(e.target.value)}
-//       autoFocus
-//     />
-//   </div>
-//   <div>
-//     <label htmlFor="password">password </label>{" "}
-//     <input
-//       type="password"
-//       id="password"
-//       value={password}
-//       onChange={(e) => setPassword(e.target.value)}
-//       autoComplete="current-password"
-//     />
-//   </div>
-//   <div>
-//     <label htmlFor="password">password confirmation </label>{" "}
-//     <input
-//       type="password"
-//       id="password_confirmation"
-//       value={passwordConfirmation}
-//       onChange={(e) => setPasswordConfirmation(e.target.value)}
-//       autoComplete="current-password"
-//     />
-//   </div>
-//   <div>
-//     <label htmlFor="foodType">food type </label>{" "}
-//     <input
-//       type="text"
-//       id="foodType"
-//       autoComplete="off"
-//       value={foodType}
-//       onChange={(e) => setFoodType(e.target.value)}
-//     />
-//   </div>
-//   <div>
-//     <label htmlFor="companyName">company name </label>{" "}
-//     <input
-//       type="text"
-//       id="companyName"
-//       autoComplete="off"
-//       value={companyName}
-//       onChange={(e) => setCompanyName(e.target.value)}
-//     />
-//   </div>
-
-//   <div>
-//     <label htmlFor="img">profile picture</label>{" "}
-//     <input type="file" onChange={fileSelectHandler} />
-//   </div>
-//   <div>
-//     <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-//   </div>
-//   <div>
-//     {inputErrors.map((err) => (
-//       <div key={err}>
-//         <span>!</span>
-//         <p>{err}</p>
-//       </div>
-//     ))}
-//   </div>
-// </form>

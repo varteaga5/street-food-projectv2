@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./NavBar";
-import "../App.css";
 import Login from "../pages/Login";
 import VendorList from "../pages/VendorList";
 import FavList from "../pages/FavList";
@@ -12,6 +11,13 @@ import VendProfile from "../pages/VendProfile";
 import VendMenuList from "../pages/VendMenuList";
 import NewMenuItem from "../pages/NewMenuItem";
 import EditMenuItem from "../pages/EditMenuItem";
+import LogoImage from '/Users/VCNTX/Development/code/phase5/street-food-projectv2/client/src/assets/bgimg.jpeg';
+
+const sectionStyle = {
+   backgroundImage: `url(${LogoImage})`,
+   backgroundSize: 'cover',
+   height: '100vh'
+}
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,9 +38,9 @@ function App() {
     });
   }, []);
 
-  // if not logged in takes user to login screen
-  if (!user) return <Login onLogin={setUser} />;
-  // console.log("this is user", user);
+  // if not logged in, takes user to login screen
+  if (!user) return <div className="d-flex justify-content-center align-items-center" style={sectionStyle}><Login onLogin={setUser} /></div>;
+
 
   const vendorType = (
     <>
@@ -100,10 +106,10 @@ function App() {
   userIsVendor ? (userType = vendorType) : (userType = custType);
 
   return (
-    <div className="App">
+    <div className="App" >
       <NavBar userIsVendor={userIsVendor} setUser={setUser} />
       <h3>hello, {user.firstName}!</h3>
-      <div>
+      <div >
         <Routes>{userType}</Routes>
       </div>
     </div>

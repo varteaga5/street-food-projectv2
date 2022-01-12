@@ -3,12 +3,10 @@ import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Badge from "react-bootstrap/Badge";
 import VendorCard from "../components/VendorCard";
-import Search from "../components/Search";
 
 const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
   const [vendors, setVendors] = useState([]);
   const [hasMore, setHasMore] = useState(true);
-  const [search, setSearch] = useState("");
 
   const [page, setPage] = useState(2);
   const navigate = useNavigate();
@@ -17,13 +15,13 @@ const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
     const getVendors = async () => {
       const res = await fetch("/vendorlist");
       const data = await res.json();
+
       setVendors(data);
     };
     getVendors();
   }, []);
 
   const viewMenuHandler = (e) => {
-    console.log("this is e.target.id ", e.target.id);
     fetch("/menus/" + e.target.id)
       .then((r) => r.json())
       .then((menu) => getMenuInfo(menu));
@@ -51,10 +49,9 @@ const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
     <section>
       <h3>
         <Badge pill bg="warning">
-          Vendors near you
+          browse vendors near you
         </Badge>
       </h3>
-      <Search Psearch={search} PsetSearch={setSearch} setVendors={setVendors} />
       <InfiniteScroll
         dataLength={vendors.length}
         next={fetchData}
@@ -92,17 +89,3 @@ const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
 };
 
 export default VendorList;
-
-// style={{
-//   border: "5px solid #1a202c",
-//   padding: "8px",
-//   minWidth: "32px",
-//   maxWidth: "512px",
-//   background: "transparent",
-//   transition: "all 0.1s ease-in",
-// }}
-
-// <label>search here </label>{" "}
-// <input
-
-// />{" "}

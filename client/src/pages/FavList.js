@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
-import Search from "../components/Search";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
@@ -43,7 +42,6 @@ const FavList = ({ getMenuInfo, getVendorName }) => {
       <h3>
         <Badge bg="warning">My Favorite Vendors</Badge>
       </h3>
-      <Search setVendors={setVendors} />
       {vendors && vendors.length > 0 ? (
         vendors.map((vendor) => (
           <Card
@@ -81,33 +79,3 @@ const FavList = ({ getMenuInfo, getVendorName }) => {
   );
 };
 export default FavList;
-
-//   <article key={vendor.id}>
-//   <div>
-//     <h2>{vendor.companyName}</h2>
-//     <p>{vendor.foodType}</p>
-//     <button
-//       id={vendor.companyName}
-//       onClick={viewMenuHandler}
-//       getname={vendor.companyName}
-//     >
-//       view menu
-//     </button>
-//     <button id={vendor.id} onClick={handleDelete}>
-//       remove from list
-//     </button>
-//   </div>
-// </article>
-
-//   <>
-//   <VendorCard
-//     id={vendor.id}
-//     img={vendor.imgurl}
-//     companyName={vendor.companyName}
-//     foodType={vendor.foodType}
-//     viewMenuHandler={viewMenuHandler}
-//     currentUser={currentUser}
-//     currentVendor={vendor}
-//   />
-//   <p></p>
-// </>

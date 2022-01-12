@@ -12,9 +12,9 @@ export const Login = ({ onLogin }) => {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
-    <div>
-      <section>
-        <Container>
+    <div > 
+      <section className="rounded p-4 p-sm-3 bg-white">
+        <Container >
           <h1>Street Foods</h1>
           <p>
             <Button variant="danger" onClick={() => setShowCustLogin(true)}>

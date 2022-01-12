@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 
 const BtnAddVend = ({ currentVendor, currentUser }) => {
   const [addedVend, setAddedVend] = useState(false);
-  // console.log("this is currentVendor.id", currentVendor.id);
 
   const clickHandler = (e) => {
     fetch("/fav_vendors", {
