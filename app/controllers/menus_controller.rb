@@ -1,10 +1,6 @@
 class MenusController < ApplicationController
 
-        # def search
-        #     search = @current_user.houses.query(params[:query])
-        #     render json: search
-        # end
-        
+       
         def index
             render json: Menu.find_by(id: params[:id])
         end
@@ -46,17 +42,6 @@ class MenusController < ApplicationController
         end
         
         def render_menu
-            # will have to find the correlated vendor
-
-            # add vendor id col to Menu model
-            # create btn component and pass vendor as props
-            # use vendor id to find vendor by id and then call .menus
             render json: @current_user.menus
         end
 end
-
-# t.bigint "user_id", null: false
-# t.string "companyName"
-# t.string "foodName"
-# t.string "foodDesc"
-# t.string "price"

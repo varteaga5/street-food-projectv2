@@ -11,8 +11,6 @@ class FavVendorsController < ApplicationController
         fav_vend = FavVendor.create(ven_params)
         render json: fav_vend
     end
-    # this is whats needed to create seed
-    # FavVendor.create!(firstName: 'treVendor', lastName: 'treVendor', email: 'treVendor@treVendor.com', foodType: 'tacos', companyName:'tretacos', user_id:69)
 
     def show
         fav_vend = @current_user.fav_vendors
