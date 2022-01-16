@@ -12,7 +12,7 @@ const VendProfile = ({ currentUser }) => {
   const [password, setPassword] = useState(currentUser.password);
   const [foodType, setFoodType] = useState(currentUser.foodType);
   const [companyName, setCompanyName] = useState(currentUser.companyName);
-  const [imgurl, setImgurl] = useState("");
+  const [featured_image, setFeatured_image] = useState(currentUser.featured_image);
 
   const [wasClicked, setWasClicked] = useState(false);
   const [subOrEdit, setSubOrEdit] = useState(false);
@@ -25,20 +25,20 @@ const VendProfile = ({ currentUser }) => {
     setSubOrEdit(!subOrEdit);
     setWasClicked(!wasClicked);
     setIsLoading(true);
+
+    const formData = new FormData();
+    formData.append("firstName", firstName);
+    formData.append("lastName", lastName);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("passwordConfirmation", password);
+    formData.append("companyName", companyName);
+    formData.append("type", "Vendor");
+    formData.append("featured_image", featured_image);
+
     fetch("/vendors/" + currentUser.id, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
-        password,
-        companyName,
-        foodType,
-        imgurl,
-      }),
+      body: formData,
     }).then((r) => {
       if (r.ok) {
         setIsLoading(false);
@@ -55,7 +55,7 @@ const VendProfile = ({ currentUser }) => {
   };
 
   const fileSelectHandler = (e) => {
-    setImgurl(e.target.files[0]);
+    setFeatured_image(e.target.files[0]);
   };
 
   return (
@@ -163,7 +163,7 @@ const VendProfile = ({ currentUser }) => {
           <ListGroup.Item>
             <Badge>profile pic:</Badge>
             <img
-              src={imgurl}
+              src={featured_image}
               variant="top"
               className="img-thumbnail"
               alt="your profile pic"

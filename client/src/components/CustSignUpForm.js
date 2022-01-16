@@ -47,7 +47,6 @@ const CustSignUpForm = ({ onLogin }) => {
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label className="text-danger">first name</Form.Label>
         <Form.Control
-          // className="text-danger"
           type="firstName"
           placeholder="enter first name"
           value={firstName}
@@ -103,12 +102,13 @@ const CustSignUpForm = ({ onLogin }) => {
       <Button variant="danger" type="submit">
         {isLoading ? "loading..." : "sign up"}
       </Button>
+      <p></p>
       <div>
         {inputErrors.map((err) => (
-          <div key={err}>
-            <span>!</span>
-            <p>{err}</p>
-          </div>
+          <div
+          key={err}
+          class="alert alert-danger fade show text-center"
+        >{err}</div>
         ))}
       </div>
     </Form>

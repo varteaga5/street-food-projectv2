@@ -34,31 +34,32 @@ const VendLoginForm = ({ onLogin }) => {
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label className="text-warning">email</Form.Label>
-        <Form.Control type="email" placeholder="enter email" value={email}
-          onChange={(e) => setEmail(e.target.value)}/>
+        <Form.Control
+          type="email"
+          placeholder="enter email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label className="text-warning">password</Form.Label>
-        <Form.Control type="password" placeholder="password" value={password}
-          onChange={(e) => setPassword(e.target.value)} />
+        <Form.Control
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </Form.Group>
       <Button variant="warning" className="text-light" type="submit">
         {isLoading ? "loading..." : "login"}
       </Button>
+
+      <p></p>
       <div>
         {errors.map((err) => (
-          <div key={err}>
-            <span>!</span>
-            <p>{err}</p>
-          </div>
-        ))}
-      </div>
-      <div>
-        {errors.map((err) => (
-          <div key={err}>
-            <span>!</span>
-            <p>{err}</p>
+          <div key={err} class="alert alert-danger fade show text-center">
+            {err}
           </div>
         ))}
       </div>

@@ -74,12 +74,13 @@ const NewMenuItem = ({ currentUser }) => {
         <Button variant="danger" onClick={() => navigate("/VendMenuList")}>
           cancel
         </Button>
+        <p></p>
         <div>
           {errors.map((err) => (
-            <div key={err}>
-              <span>!</span>
-              <p>{err}</p>
-            </div>
+            <div
+              key={err}
+              class="alert alert-danger fade show text-center"
+            >{err}</div>
           ))}
         </div>
       </Form>

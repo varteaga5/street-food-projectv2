@@ -6,7 +6,7 @@ class MenusController < ApplicationController
         end
 
         def create
-            new_item = @current_user.menus.create(menu_params)
+            new_item = @current_user.menus.create!(menu_params)
             render json: new_item, status: :created
         end
 

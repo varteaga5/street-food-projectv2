@@ -23,12 +23,12 @@ class VendorsController < ApplicationController
     private
 
     def vendor_params
-        params.permit(:id, :firstName, :lastName, :email, :password, :password_confirmation, :foodType, :companyName, :type, :imgurl)
+        params.permit(:id, :firstName, :lastName, :email, :password, :password_confirmation, :foodType, :companyName, :type, :featured_image)
     end
 
     def update_params
         # params.permit(:id, :firstName, :lastName, :email, :password, :companyName, :foodType,  :imgurl)
-        params.require(:vendor).permit(:id, :firstName, :lastName, :email, :password, :companyName, :foodType,  :imgurl)
+        params.require(:vendor).permit(:id, :firstName, :lastName, :email, :password, :companyName, :foodType, :featured_image)
     end
 
 end

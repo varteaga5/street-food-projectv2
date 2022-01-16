@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_one_attached :featured_image
+
     scope :customers, -> {where(type: 'Customer')} # User.friends
     scope :vendors, -> {where(type: 'Vendor')}
 
@@ -11,7 +13,7 @@ class User < ApplicationRecord
 
     validates :firstName, presence: true
     validates :lastName, presence: true
-    validates :email, presence: true, uniqueness: true
+    # validates :email, presence: true, uniqueness: true
     validates :password_digest, presence: true
 
 end

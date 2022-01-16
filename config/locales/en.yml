@@ -25,9 +25,44 @@
 #
 # en:
 #   'true': 'foo'
+# en:
+#   activerecord:
+#     models:
+#       order:            "Order"
+#     attributes:
+#       order:
+#         b_name:         "Business Name"
+
+    # validates :firstName, presence: true
+    # validates :lastName, presence: true
+    # validates :email, presence: true, uniqueness: true
+    # validates :password_digest, presence: true
+    # validates :companyName, presence: true, uniqueness: true
+    # validates :foodType, presence: true  
+    # validates :favFood, presence: true
 #
+  # hello: "Hello world"
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models: 
+      menu:           "Menu"
+    attributes:
+      menu: 
+        foodName:     "food name"
+        foodDesc:     "food description"
+        price:        "price"
+    models: 
+      user:           "User"
+    attributes:
+      user: 
+        firstName:        "first name"
+        lastName:         "last name"
+        email:            "email"
+        password_digest:  "password confirmation"
+        password:         "password"
+        companyName:      "company name"
+        favFood:          "favorite food"
+        foodType:         "food type"

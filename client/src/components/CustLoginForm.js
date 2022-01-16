@@ -47,12 +47,13 @@ const CustLoginForm = ({ onLogin }) => {
       <Button variant="danger" type="submit">
         {isLoading ? "loading..." : "login"}
       </Button>
+      <p></p>
       <div>
         {errors.map((err) => (
-          <div key={err}>
-            <span>!</span>
-            <p>{err}</p>
-          </div>
+           <div
+           key={err}
+           class="alert alert-danger fade show text-center"
+         >{err}</div>
         ))}
       </div>
     </Form>

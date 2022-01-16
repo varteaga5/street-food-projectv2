@@ -65,10 +65,10 @@ const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
       >
         {vendors && vendors.length > 0 ? (
           vendors.map((vendor) => (
-            <div id={vendor.id}>
+            <div key={vendor.id}>
               <VendorCard
                 id={vendor.id}
-                img={vendor.imgurl}
+                img={vendor.featured_image}
                 companyName={vendor.companyName}
                 foodType={vendor.foodType}
                 viewMenuHandler={viewMenuHandler}
