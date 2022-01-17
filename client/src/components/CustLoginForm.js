@@ -23,7 +23,13 @@ const CustLoginForm = ({ onLogin }) => {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          if (user.type === "Customer") {
+            onLogin(user)
+          } else {
+            setErrors(["you are not registered as a customer", "please log in as a customer"])
+          }
+          });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

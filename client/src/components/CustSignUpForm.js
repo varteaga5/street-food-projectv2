@@ -44,7 +44,7 @@ const CustSignUpForm = ({ onLogin }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" controlId="formBasicFirstName">
         <Form.Label className="text-danger">first name</Form.Label>
         <Form.Control
           type="firstName"
@@ -54,7 +54,7 @@ const CustSignUpForm = ({ onLogin }) => {
           autoFocus
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" controlId="formBasicLastName">
         <Form.Label className="text-danger">last name</Form.Label>
         <Form.Control
           type="lastName"
@@ -81,7 +81,7 @@ const CustSignUpForm = ({ onLogin }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="formBasicConfrimPassword">
         <Form.Label className="text-danger">password confirmation</Form.Label>
         <Form.Control
           type="passwordcon"
@@ -90,7 +90,7 @@ const CustSignUpForm = ({ onLogin }) => {
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="formBasicFavFood">
         <Form.Label className="text-danger">my favorite food</Form.Label>
         <Form.Control
           type="favfood"

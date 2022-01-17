@@ -22,7 +22,13 @@ const VendLoginForm = ({ onLogin }) => {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          if (user.type === "Vendor") {
+            onLogin(user)
+          } else {
+            setErrors(["you are not registered as a vendor", "please log in as a vendor"])
+          }
+          });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

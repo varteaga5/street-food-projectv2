@@ -4,13 +4,19 @@ class SessionsController < ApplicationController
 
     def create
         user = User.find_by(email: params[:email])
-
-        if user&.authenticate(params[:password])
-            session[:user_id] = user.id
-            render json: user
-        else
-            render json: { errors: ["Invalid username or password"]}, status: :unauthorized
-        end
+        # if user.type == "Vendor"
+            # do this
+            
+            if user&.authenticate(params[:password])
+                session[:user_id] = user.id
+                render json: user
+            else
+                render json: { errors: ["Invalid username or password"]}, status: :unauthorized
+            end
+        # else
+            # do this
+            # render json: { errors: ["you are not registered as a vendor"]}, status: :unauthorized
+        # end
     end
 
     def destroy

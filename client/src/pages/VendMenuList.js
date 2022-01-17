@@ -19,7 +19,7 @@ const VendMenuList = ({
     fetch("/menus/" + currentUser.id)
       .then((r) => r.json())
       .then((menu) => setMenuList(menu));
-  }, []);
+  }, [currentUser]);
 
   function handleDelete(menuItem) {
     fetch("/menus/" + menuItem.target.id, {

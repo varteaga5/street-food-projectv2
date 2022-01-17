@@ -16,7 +16,7 @@ class VendorsController < ApplicationController
 
     def update
         vendor = Vendor.find_by(id: session[:user_id])
-        vendor.update(update_params)
+        vendor.update(vendor_params)
         render json: vendor
     end
 
@@ -24,11 +24,6 @@ class VendorsController < ApplicationController
 
     def vendor_params
         params.permit(:id, :firstName, :lastName, :email, :password, :password_confirmation, :foodType, :companyName, :type, :featured_image)
-    end
-
-    def update_params
-        # params.permit(:id, :firstName, :lastName, :email, :password, :companyName, :foodType,  :imgurl)
-        params.require(:vendor).permit(:id, :firstName, :lastName, :email, :password, :companyName, :foodType, :featured_image)
     end
 
 end
