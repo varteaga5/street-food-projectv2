@@ -84,7 +84,7 @@ const CustSignUpForm = ({ onLogin }) => {
       <Form.Group className="mb-3" controlId="formBasicConfrimPassword">
         <Form.Label className="text-danger">password confirmation</Form.Label>
         <Form.Control
-          type="passwordcon"
+          type="password"
           placeholder="confirm password"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
@@ -107,7 +107,7 @@ const CustSignUpForm = ({ onLogin }) => {
         {inputErrors.map((err) => (
           <div
           key={err}
-          class="alert alert-danger fade show text-center"
+          className="alert alert-danger fade show text-center"
         >{err}</div>
         ))}
       </div>

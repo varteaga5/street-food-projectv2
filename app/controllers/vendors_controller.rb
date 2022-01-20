@@ -9,6 +9,17 @@ class VendorsController < ApplicationController
         render json: vendor, status: :created
     end
 
+    def search
+        # vendor = Vendor.all.paginate(page: params[:page], per_page: 2)
+        # render json: vendor
+
+        # search = User.vendors.where('users.companyName ILIKE ?', "%#{params[:query]}%")
+        # render json: search
+        # vendors = User.type
+        vendors = User.where(foodType: params[:query])
+        render json: vendors
+    end
+
     def vendor_list
         vendor = Vendor.all.paginate(page: params[:page], per_page: 8)
         render json: vendor

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Badge from "react-bootstrap/Badge";
 import VendorCard from "../components/VendorCard";
+import Search from "../components/Search";
 
 const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
   const [vendors, setVendors] = useState([]);
@@ -47,7 +48,7 @@ const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
 
   return (
     <section>
-      <h3>
+           <h3>
         <Badge pill bg="warning">
           browse vendors near you
         </Badge>
@@ -78,12 +79,13 @@ const VendorList = ({ currentUser, getMenuInfo, getVendorName }) => {
               <p></p>
             </div>
           ))
-        ) : (
-          <>
+          ) : (
+            <>
             <h2>No vendors Found</h2>
           </>
         )}
       </InfiniteScroll>
+      <Search setVendors={setVendors} />
     </section>
   );
 };

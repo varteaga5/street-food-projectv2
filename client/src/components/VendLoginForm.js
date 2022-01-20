@@ -64,7 +64,7 @@ const VendLoginForm = ({ onLogin }) => {
       <p></p>
       <div>
         {errors.map((err) => (
-          <div key={err} class="alert alert-danger fade show text-center">
+          <div key={err} className="alert alert-danger fade show text-center">
             {err}
           </div>
         ))}

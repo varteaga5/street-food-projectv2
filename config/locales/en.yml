@@ -61,7 +61,7 @@ en:
         firstName:        "first name"
         lastName:         "last name"
         email:            "email"
-        password_digest:  "password confirmation"
+        password_digest:  "password"
         password:         "password"
         companyName:      "company name"
         favFood:          "favorite food"

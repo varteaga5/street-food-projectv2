@@ -96,6 +96,17 @@ function App() {
         path="/ViewMenu"
         element={<ViewMenu menuInfo={menuInfo} vendorName={vendorName} />}
       />
+            <Route
+        path="*"
+        element={
+          <VendorList
+            currentUser={user}
+            getMenuInfo={setMenuInfo}
+            getVendorName={setVendorName}
+          />
+        }
+      />
+
     </>
   );
 
@@ -107,6 +118,7 @@ function App() {
   return (
     <div className="App" >
       <NavBar userIsVendor={userIsVendor} setUser={setUser} />
+      {/* <Search /> */}
       <h3>hello, {user.firstName}!</h3>
       <div >
         <Routes>{userType}</Routes>

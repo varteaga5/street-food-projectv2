@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 
 const NavBar = ({ setUser, userIsVendor }) => {
+  const [active, setActive] = useState("default");
+
   function handleLogout() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -43,16 +45,19 @@ const NavBar = ({ setUser, userIsVendor }) => {
 
   return (
     <Navbar
-      autoClose="outside"
+      autoclose="outside"
       sticky="top"
       bg="dark"
       variant="dark"
       expand="lg"
+      activeKey={active}
+      onSelect={(selectedKey) => setActive(selectedKey)}
     >
       <Container>
         <Navbar.Brand as={Link} to="/">
           Street Food
         </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">{userType}</Nav>
