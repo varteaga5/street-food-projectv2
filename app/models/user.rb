@@ -14,9 +14,10 @@ class User < ApplicationRecord
     validates :firstName, presence: true
     validates :lastName, presence: true
     validates :email, presence: true, uniqueness: true
-    # validates :password_digest, presence: true, length: { within: 6..8 }
+
+
+
     validates :password, :presence => true,
                    :confirmation => true,
-                   :length => {:within => 6..8}
-
+                   :length => {:within => 6..10}
 end

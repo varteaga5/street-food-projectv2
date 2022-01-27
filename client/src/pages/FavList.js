@@ -70,7 +70,7 @@ const FavList = ({ getMenuInfo, getVendorName }) => {
       ) : (
         <>
           <h2>No vendors Found</h2>
-          <Button variant="warning" onClick={() => navigate("/")}>
+          <Button className="text-light" variant="warning" onClick={() => navigate("/")}>
             Browse Vendors
           </Button>
         </>
